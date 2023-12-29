@@ -20,7 +20,7 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build docker image
-        run: docker build -t sarathpokkandath369/actionsample -f Dockerfile --platform linux/amd64.
+        run: docker build -t sarathpokkandath369/actionsample -f Dockerfile .
         working-directory: GHaction_demo
       - name: Publish image to docker hub
         run: docker push sarathpokkandath369/actionsample:latest
