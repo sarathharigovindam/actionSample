@@ -30,8 +30,8 @@ jobs:
     runs-on: [action-runner]
     steps:
       - name: Pull Image from docker hub
-        run: docker pull sarathpokkandath369/actionsample:latest
+        run: sudo docker pull sarathpokkandath369/actionsample:latest
       - name: Delete old container
-        run: docker rm -f actionsample-container
+        run: sudo docker rm -f actionsample-container
       - name: Run docker container
-        run: docker run --platform linux/amd64 -d -p 8080:8080 --name actionsample-container sarathpokkandath369/actionsample
+        run: sudo docker run --platform linux/amd64 -d -p 8080:8080 --name actionsample-container sarathpokkandath369/actionsample
