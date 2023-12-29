@@ -16,7 +16,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - name: Build Project
-        run: mvn clean install -DskipTests
+        run: mvn -B package --file GHaction_demo/pom.xml
       - name: Login to docker hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build docker image
