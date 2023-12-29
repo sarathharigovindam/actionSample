@@ -27,7 +27,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: [action]
+    runs-on: [action-runner]
     steps:
       - name: Pull Image from docker hub
         run: docker pull sarathpokkandath369/actionsample:latest
