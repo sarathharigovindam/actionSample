@@ -20,9 +20,9 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build docker image
-        run: docker build -t sarathharigovindam/actionSample .
+        run: docker build -t sarathharigovindam/actionsample .
       - name: Publish image to docker hub
-        run: docker push sarathharigovindam/actionSample:latest
+        run: docker push sarathharigovindam/actionsample:latest
 
   deploy:
     needs: build
