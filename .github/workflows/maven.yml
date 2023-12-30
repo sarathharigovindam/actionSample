@@ -1,0 +1,37 @@
+name: CICD
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build Project
+        run: mvn -B package --file GHaction_demo/pom.xml
+      - name: Login to docker hub
+        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+      - name: Build docker image
+        run: docker build -t sarathpokkandath369/actionsample -f Dockerfile .
+        working-directory: GHaction_demo
+      - name: Publish image to docker hub
+        run: docker push sarathpokkandath369/actionsample:latest
+
+  deploy:
+    needs: build
+    runs-on: [action-runner]
+    steps:
+      - name: Pull Image from docker hub
+        run: sudo docker pull sarathpokkandath369/actionsample:latest
+      - name: Delete old container
+        run: sudo docker rm -f actionsample-container
+      - name: Run docker container
+        run: sudo docker run --platform linux/amd64 -d -p 8080:8080 --name actionsample-container sarathpokkandath369/actionsample
