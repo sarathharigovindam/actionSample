@@ -10,8 +10,9 @@ import java.util.Map;
 public class DemoController {
     @GetMapping
     public Object hello(){
-        Map<String,String> object= new HashMap<>();
-        object.put("Title","Hackathon POC by Strikers");
-        return object;
+        // Map<String,String> object= new HashMap<>();
+        // object.put("Title","Hackathon POC by Strikers");
+        String var="Hackathon POC by Strikers";
+        return var;
     }
 }
