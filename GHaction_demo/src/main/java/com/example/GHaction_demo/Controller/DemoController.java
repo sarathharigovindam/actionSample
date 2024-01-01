@@ -12,7 +12,7 @@ public class DemoController {
     public Object hello(){
         // Map<String,String> object= new HashMap<>();
         // object.put("Title","Hackathon POC by Strikers");
-        String var="Hackathon POC by Strikers(System Team)";
+        String var="Hackathon POC by Strikers";
         return var;
     }
 }
