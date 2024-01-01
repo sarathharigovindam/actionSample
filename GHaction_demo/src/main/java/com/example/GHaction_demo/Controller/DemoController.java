@@ -9,9 +9,7 @@ import java.util.Map;
 @RestController
 public class DemoController {
     @GetMapping
-    public Object hello(){
-        // Map<String,String> object= new HashMap<>();
-        // object.put("Title","Hackathon POC by Strikers");
+    public String demo(){
         String var="Hackathon POC by Strikers";
         return var;
     }
