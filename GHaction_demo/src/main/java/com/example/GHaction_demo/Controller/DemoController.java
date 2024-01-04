@@ -10,7 +10,7 @@ import java.util.Map;
 public class DemoController {
     @GetMapping
     public String demo(){
-        String var="Hackathon POC by Strikers";
+        String var="Hackathon POC by System Team";
         return var;
     }
 }
